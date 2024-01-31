@@ -110,6 +110,7 @@ watch(() => emit('reset'), () => {
 </script>
 
 <template>
+  <div class="print-container content-container">
   <div v-if="randomBox" class="svg-container grid-row">
     <img :src="randomBox.svg" alt="Random Box" class="box-image"/>
 
@@ -142,6 +143,7 @@ watch(() => emit('reset'), () => {
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 
@@ -160,8 +162,10 @@ watch(() => emit('reset'), () => {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+  //justify-content: center;
+  //align-items: center;
 }
 
 .grid-box{
@@ -172,6 +176,8 @@ watch(() => emit('reset'), () => {
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 0;
   grid-row-gap: 0;
+  //justify-content: center;
+  //align-items: center;
 }
 
 .box-image{
@@ -226,8 +232,15 @@ watch(() => emit('reset'), () => {
     -webkit-print-color-adjust: exact;
     color-adjust: exact;
   }
+  .print-container {
+    column-count: 2;
+    column-gap: 10px;
+  }
+
   .svg-container{
     margin-bottom: 10px;
+    //break-inside: avoid;
+    //break-after: auto;
   }
 
   .horizontal-line, .vertical-line {
@@ -236,12 +249,18 @@ watch(() => emit('reset'), () => {
   }
 
   .grid-row{
-    width: 400px;
+    width: 100%;
+    margin-bottom: 50px;
   }
 
   .grid-box{
-    width: 100px;
-    height: 100px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0;
+    grid-row-gap: 0;
+    //justify-content: center;
+    //align-items: center;
   }
 
   .box-image{
