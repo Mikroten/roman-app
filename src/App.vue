@@ -3,7 +3,7 @@ import {onUnmounted, ref} from 'vue';
 import QuizComponent from './components/QuizComponent.vue';
 import Modal from './components/Modal.vue';
 
-const totalQuizzes = 118;
+const totalQuizzes = 30;
 const correctCount = ref(0);
 const incorrectCount = ref(0);
 const answeredCount = ref(0);
